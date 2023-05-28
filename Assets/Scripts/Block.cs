@@ -1,18 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Block : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public event UnityAction<Block> BulletHit;
+    
+    public void Break()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        BulletHit?.Invoke(this);
+        Destroy(gameObject);
     }
 }
